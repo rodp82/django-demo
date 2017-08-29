@@ -9,3 +9,9 @@ from django.http import HttpResponse
 def home(request):
     tplVars = {'message': 'Welcome'}
     return render(request, 'main/home.html', tplVars)
+
+def page1(request):
+    return render(request, 'main/page1.html')
+
+def page2(request):
+    return render(request, 'main/page2.html')
