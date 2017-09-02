@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Fixed top navbar example for Bootstrap</title>
+    <title>{% block title %}My Django Demo Site{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'vendors/bootstrap/css/bootstrap.min.css' %}"/>
@@ -36,6 +36,17 @@
             <li class="nav-item">
                 <a class="nav-link" href="/page2">Page 2</a>
             </li>
+        </ul>
+        <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'site_login' %}">Login</a>
+            </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

@@ -19,7 +19,11 @@ from django.views import View
 
 class Home(View):
     def get(self, request):
-        tplVars = {'message': 'Welcome'}
+        if request.user.is_authenticated:
+            tplVars = {'name': request.user.username}
+        else:
+            tplVars = {'name': 'Guest'}
+
         return render(request, 'main/home.html', tplVars)
 
 
