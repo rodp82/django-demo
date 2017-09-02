@@ -29,8 +29,19 @@ $ . bin/activate
 $ pip install django
 ```
 
-6. Start dev server
+6. Run Migrations
+```sh
+$ python manage.py migrate
+```
+
+7. Start dev server
 ```sh
 $ cd /vagrant/mysite
 $ python manage.py runserver 0.0.0.0:8000
+```
+
+## Django Admin
+1. Need to create a superuser
+```sh
+$ python manage.py createsuperuser
 ```
