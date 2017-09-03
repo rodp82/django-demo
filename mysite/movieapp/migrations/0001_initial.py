@@ -41,10 +41,15 @@ def forwards_func(apps, schema_editor):
 def reverse_func(apps, schema_editor):
     # forwards_func() creates two Country instances,
     # so reverse_func() should delete them.
-    Country = apps.get_model("myapp", "Country")
+    Movie = apps.get_model("movieapp", "Movie")
+    Actor = apps.get_model("movieapp", "Actor")
     db_alias = schema_editor.connection.alias
-    Country.objects.using(db_alias).filter(name="USA", code="us").delete()
-    Country.objects.using(db_alias).filter(name="France", code="fr").delete()
+    Movie.objects.using(db_alias).filter(id=1).delete()
+    Movie.objects.using(db_alias).filter(id=2).delete()
+    Movie.objects.using(db_alias).filter(id=3).delete()
+    Actor.objects.using(db_alias).filter(id=1).delete()
+    Actor.objects.using(db_alias).filter(id=2).delete()
+    Actor.objects.using(db_alias).filter(id=3).delete()
 
 
 class Migration(migrations.Migration):
