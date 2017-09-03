@@ -9,7 +9,8 @@
         {% for movie in movie_list %}
             <li>
                 <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a>
-                <small>(<a href="{% url 'movie_update' pk=movie.id %}">edit</a>)</small>
+                <small>(<a href="{% url 'movie_update' pk=movie.id %}">edit</a> |
+                    <a href="{% url 'movie_delete' pk=movie.id %}">del</a>)</small>
             </li>
         {% endfor %}
     </ul>

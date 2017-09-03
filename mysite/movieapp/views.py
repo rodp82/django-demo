@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 
 from django.views.generic import ListView, DetailView
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 from .models import Movie, Actor
 
@@ -40,6 +41,11 @@ class MovieUpdate(UpdateView):
         return context
 
 
+class MovieDelete(DeleteView):
+    model = Movie
+    success_url = reverse_lazy('movie_list')
+
+
 class ActorList(ListView):
     model = Actor
     context_object_name = 'actor_list'
@@ -70,3 +76,8 @@ class ActorUpdate(UpdateView):
         context = super(ActorUpdate, self).get_context_data(**kwargs)
         context['page_title'] = 'Update Actor'
         return context
+
+
+class ActorDelete(DeleteView):
+    model = Actor
+    success_url = reverse_lazy('movie_list')
