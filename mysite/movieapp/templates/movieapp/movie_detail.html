@@ -6,6 +6,23 @@
 
     <h2>{{ movie.title }}</h2>
     <h3>{{ movie.year }}</h3>
+
+    <h4>Actors</h4>
+    <p><i>To get a list of actors for a movie, you would use the defined relationship Movie.Actors which is defined
+        through Cast. However this does not have access to the Cast.salary field</i></p>
+    <ul>
+        {% for actor in movie.actors.all %}
+            <li><a href="{{ actor.get_absolute_url }}">{{ actor.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <h4>Cast</h4>
+    <p><i>In order to access the salary field, you need to access the Movie.cast_set field which includes the Actor as well</i></p>
+    <ul>
+        {% for cast in movie.cast_set.all %}
+            <li><a href="{{ cast.actor.get_absolute_url }}">{{ cast.actor.name }}</a> - ${{ cast.salary }}</li>
+        {% endfor %}
+    </ul>
     <p><a href="{% url 'movie_list' %}">Back to movies</a></p>
 
 {% endblock %}
