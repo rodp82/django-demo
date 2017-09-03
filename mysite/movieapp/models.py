@@ -9,6 +9,13 @@ from django.urls import reverse
 class Actor(models.Model):
     name = models.CharField(max_length=30)
 
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular instance of the model.
+        Also used by django admin to add a 'view on site' link
+        """
+        return reverse('actor_detail', args=[str(self.id)])
+
     def __str__(self):
         return self.name
 

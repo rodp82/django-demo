@@ -1,0 +1,11 @@
+{% extends "mysite/base.html" %}
+
+{% block title %}Actors | {{ actor.title }}{% endblock %}
+
+{% block content %}
+
+    <h2>{{ actor.name }}</h2>
+    <p><a href="{% url 'actor_list' %}">Back to actors</a></p>
+
+{% endblock %}
+

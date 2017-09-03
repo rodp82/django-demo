@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
     url(r'^login/$', auth_views.LoginView.as_view(), name='site_login'),
     url(r'^', include('main.urls')),
-    url(r'^movies/', include('movieapp.urls')),
+    url(r'^movie-app/', include('movieapp.urls')),
     url(r'^admin/', admin.site.urls),
 ]

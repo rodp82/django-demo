@@ -1,8 +1,11 @@
 from django.conf.urls import url
-
+from django.views.generic.base import RedirectView
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.MovieList.as_view(), name='movie_list'),
-    url(r'^(?P<pk>\d+)$', views.MovieDetail.as_view(), name='movie_detail'),
+    url(r'^$', RedirectView.as_view(pattern_name='movie_list', permanent=False), name='index'),
+    url(r'^movies$', views.MovieList.as_view(), name='movie_list'),
+    url(r'^movies/(?P<pk>\d+)$', views.MovieDetail.as_view(), name='movie_detail'),
+    url(r'^actors$', views.ActorList.as_view(), name='actor_list'),
+    url(r'^actors/(?P<pk>\d+)$', views.ActorDetail.as_view(), name='actor_detail'),
 ]
