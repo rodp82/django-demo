@@ -6,7 +6,7 @@
     <h2>Movies</h2>
     <ul>
         {% for movie in movie_list %}
-            <li>{{ movie.title }}</li>
+            <li><a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

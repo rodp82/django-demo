@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -19,6 +20,13 @@ class Movie(models.Model):
 
     def __str__(self):
         return '{} ({})'.format(self.title, self.year)
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular instance of the model.
+        Also used by django admin to add a 'view on site' link
+        """
+        return reverse('movie_detail', args=[str(self.id)])
 
 
 class Cast(models.Model):
