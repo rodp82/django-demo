@@ -4,9 +4,13 @@
 
 {% block content %}
     <h2>Movies</h2>
+    <p><a class="btn btn-primary" href="{% url 'movie_create' %}">Add New Movie</a></p>
     <ul>
         {% for movie in movie_list %}
-            <li><a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a></li>
+            <li>
+                <a href="{{ movie.get_absolute_url }}">{{ movie.title }}</a>
+                <small>(<a href="{% url 'movie_update' pk=movie.id %}">edit</a>)</small>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}
