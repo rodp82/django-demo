@@ -4,9 +4,13 @@
 
 {% block content %}
     <h2>Actors</h2>
+    <p><a class="btn btn-primary" href="{% url 'actor_create' %}">Add New Actor</a></p>
     <ul>
         {% for actor in actor_list %}
-            <li><a href="{{ actor.get_absolute_url }}">{{ actor.name }}</a></li>
+            <li>
+                <a href="{{ actor.get_absolute_url }}">{{ actor.name }}</a>
+                <small>(<a href="{% url 'actor_update' pk=actor.id %}">edit</a>)</small>
+            </li>
         {% endfor %}
     </ul>
 {% endblock %}

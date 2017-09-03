@@ -1,0 +1,12 @@
+{% extends "mysite/base.html" %}
+
+{% block title %}Movies | {{ page_title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ page_title }}</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
